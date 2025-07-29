@@ -6,13 +6,21 @@ import AddTodo from "./components/AddTodo";
 import Todos from "./components/Todos";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todoToEdit, setTodoToEdit] = useState(null);
+
+  const editTodoHandler = (todo) => {
+    setTodoToEdit(todo);
+  };
+
+  const clearEdit = () => {
+    setTodoToEdit(null);
+  };
 
   return (
     <>
       <h1>Learn about redux toolkit</h1>
-      <AddTodo />
-      <Todos />
+      <AddTodo todoToEdit={todoToEdit} clearEdit={clearEdit} />
+      <Todos editTodoHandler={editTodoHandler} />
     </>
   );
 }
